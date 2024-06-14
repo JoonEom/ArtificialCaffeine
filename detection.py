@@ -21,9 +21,11 @@ capture = cv2.VideoCapture(0)
 # Flag to check if the eye has been closed
 eye_closed = False
 
+
 def euclidean_distance(point1, point2):
     return math.sqrt((point1.x - point2.x) ** 2 + (point1.y - point2.y) ** 2)
 
+# eye aspect ratio is used to measure distance between eyelids to see how open or closed the eye i 
 def calculate_ear(eye_landmarks):
     # Vertical distances
     vertical_1 = euclidean_distance(eye_landmarks[1], eye_landmarks[5])
@@ -67,29 +69,15 @@ while capture.isOpened():
     results.face_landmarks,
     mp_holistic.FACEMESH_CONTOURS,
     mp_drawing.DrawingSpec(
-        color=(255,0,255),
+        color=(255,0,0),
         thickness=1,
         circle_radius=1
     ),
     mp_drawing.DrawingSpec(
-        color=(0,255,255),
+        color=(255,0,0),
         thickness=1,
         circle_radius=1
     )
-    )
-
-    # Drawing Right hand Land Marks
-    mp_drawing.draw_landmarks(
-    image, 
-    results.right_hand_landmarks, 
-    mp_holistic.HAND_CONNECTIONS
-    )
-
-    # Drawing Left hand Land Marks
-    mp_drawing.draw_landmarks(
-    image, 
-    results.left_hand_landmarks, 
-    mp_holistic.HAND_CONNECTIONS
     )
 
     if results.face_landmarks:
