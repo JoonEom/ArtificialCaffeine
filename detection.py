@@ -40,9 +40,9 @@ def calculate_ear(eye_landmarks):
     return ear
 
 # EAR threshold to determine if eye is closed ( higher the number, the more the eye is open)
-EAR_THRESHOLD = 0.30 
+EAR_THRESHOLD = 0.35 
 
-
+ 
 while capture.isOpened():
     # capture frame by frame
     ret, frame = capture.read()
@@ -69,7 +69,7 @@ while capture.isOpened():
     results.face_landmarks,
     mp_holistic.FACEMESH_CONTOURS,
     mp_drawing.DrawingSpec(
-        color=(255,0,0),
+        color=(0,0,255),
         thickness=1,
         circle_radius=1
     ),
@@ -94,7 +94,7 @@ while capture.isOpened():
         left_ear = calculate_ear(left_eye_landmarks)
 
         # debugging using print
-        # print(right_ear)
+        print(right_ear)
 
 
         # Check if both eyes are closed  
